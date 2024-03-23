@@ -30,6 +30,7 @@ final class HourlyWeatherView: UIView {
         addSubviews()
         setupLayer()
         setupConstraints()
+        viewModel.fetchHourlyWeather()
     }
     
     required init?(coder: NSCoder) {

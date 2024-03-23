@@ -13,7 +13,7 @@ final class CurrentWeatherViewModel {
     let latitude: Double
     let longitude: Double
     
-    var metrics = WeatherMetrics(temperature: 0, windSpeed: 0, hourTemperature: 0, humidity: 0)
+    var metrics: CurrentWeatherMetrics?
     
     init(latitude: Double, longitude: Double) {
         self.latitude = latitude
@@ -31,9 +31,8 @@ final class CurrentWeatherViewModel {
         manager.execute(request, expecting: CurrentWeatherData.self) { [weak self] result in
             switch result {
             case .success(let model):
-                print(String(describing: model))
-                self?.metrics.temperature = model.current.temperature2M
-                self?.metrics.windSpeed = model.current.windSpeed10M
+                self?.metrics?.temperature = model.current.temperature2M
+                self?.metrics?.windSpeed = model.current.windSpeed10M
             case .failure:
                 break
             }

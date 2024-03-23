@@ -66,8 +66,6 @@ final class WRequestBuilder {
         }).joined(separator: "&")
         
         let result = [url, joined].joined(separator: "?")
-        print("\(result)")
-        
         return WRequest(url: result)
     }
 }

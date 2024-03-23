@@ -55,7 +55,7 @@ class MainViewController: UIViewController {
             dailyWeatherView.topAnchor.constraint(equalTo: hourlyWeatherView.bottomAnchor, constant: 20),
             dailyWeatherView.leadingAnchor.constraint(equalTo: currentWeatherView.leadingAnchor),
             dailyWeatherView.trailingAnchor.constraint(equalTo: currentWeatherView.trailingAnchor),
-            dailyWeatherView.heightAnchor.constraint(equalToConstant: 315),
+            dailyWeatherView.heightAnchor.constraint(equalToConstant: 305),
         ])
     }
 }
@@ -63,6 +63,5 @@ class MainViewController: UIViewController {
 extension MainViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
 }

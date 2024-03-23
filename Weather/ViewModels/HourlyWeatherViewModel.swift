@@ -13,7 +13,7 @@ final class HourlyWeatherViewModel: NSObject {
     let latitude: Double
     let longitude: Double
 
-    var metrics = WeatherMetrics(temperature: 0, windSpeed: 0, hourTemperature: 0, humidity: 0)
+    var metrics: [HourlyMetrics] = []
     
     init(latitude: Double, longitude: Double) {
         self.latitude = latitude
