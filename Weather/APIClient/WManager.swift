@@ -29,6 +29,7 @@ final class WManager {
     }
     
     private func request(request: WRequest) -> URLRequest? {
+        print("🤖 Request \(request.url)")
         guard let url = URL(string: request.url) else { return nil }
         
         var urlRequest = URLRequest(url: url)

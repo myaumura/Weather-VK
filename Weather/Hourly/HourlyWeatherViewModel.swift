@@ -40,22 +40,19 @@ final class HourlyWeatherViewModel: NSObject {
 }
 
 extension HourlyWeatherViewModel: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WeatherCollectionViewCell.cellIdentifier, for: indexPath)
-                as? WeatherCollectionViewCell else { return UICollectionViewCell() }
-        cell.backgroundColor = .systemMint
-//        cell.configure(viewModel: viewModel)
+        let cell = collectionView.dequeueReusableCell(with: WeatherCollectionViewCell.self, for: indexPath)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
+                        layout MainCollectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
        return CGSize(width: 55, height: 55)
     }
     

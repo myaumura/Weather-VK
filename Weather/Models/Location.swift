@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct Location {
     let latitude: Double
@@ -13,7 +14,16 @@ struct Location {
 }
 
 extension Location: CustomStringConvertible {
+
     var description: String {
         return "latitude=\(latitude)&longitude=\(longitude)"
     }
 }
+
+extension Location {
+    
+    init(location: CLLocationCoordinate2D) {
+        self.init(latitude: location.latitude, longitude: location.longitude)
+    }
+}
+

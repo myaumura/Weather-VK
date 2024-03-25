@@ -9,8 +9,6 @@ import UIKit
 
 class WeatherCollectionViewCell: UICollectionViewCell {
     
-    static let cellIdentifier = "WeatherCollectionViewCell"
-    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

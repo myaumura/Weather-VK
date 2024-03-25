@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HourlyWeatherView: UIView {
+final class HourlyWeatherView: BindableCell {
     
     let viewModel = HourlyWeatherViewModel(latitude: 52.0, longitude: 52.0)
     
@@ -16,8 +16,9 @@ final class HourlyWeatherView: UIView {
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(WeatherCollectionViewCell.self, forCellWithReuseIdentifier: WeatherCollectionViewCell.cellIdentifier)
+        collectionView.register(WeatherCollectionViewCell.self)
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
@@ -28,7 +29,6 @@ final class HourlyWeatherView: UIView {
         collectionView.delegate = viewModel
         collectionView.dataSource = viewModel
         addSubviews()
-        setupLayer()
         setupConstraints()
         viewModel.fetchHourlyWeather()
     }
@@ -37,14 +37,10 @@ final class HourlyWeatherView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func bind(viewModel: CellViewModel) { }
+
     private func addSubviews() {
         addSubview(collectionView)
-    }
-    
-    private func setupLayer() {
-        layer.cornerRadius = 10
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.secondaryLabel.cgColor
     }
     
     private func setupConstraints() {
